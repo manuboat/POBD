@@ -1,9 +1,8 @@
 # POBD
-
+--
 Manel e David
 --
-LELELLELELLELE
+# To Do:
+- Login
+- Register
 
-sadfasegfewf
-
-dfgdsrge
