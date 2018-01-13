@@ -13,7 +13,7 @@ class myconnectorclassDB
 private:
 #define SERVER "db.ist.utl.pt"
 #define USER "ist170940"
-#define PASSWORD "gjbx9812"
+#define PASSWORD "gjbx981sd2"
 #define DATABASE "ist170940"
 
 	void Query(CString query);
