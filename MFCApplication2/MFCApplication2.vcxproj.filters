@@ -48,6 +48,21 @@
     <ClInclude Include="Example.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Login.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginTxt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Producer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Administrator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFCApplication2.cpp">
@@ -72,6 +87,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Example.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Login.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginTxt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Producer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Administrator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

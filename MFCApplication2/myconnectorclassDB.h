@@ -13,7 +13,7 @@ class myconnectorclassDB
 private:
 #define SERVER "db.ist.utl.pt"
 #define USER "ist170940"
-#define PASSWORD "gjbx981sd2"
+#define PASSWORD "gjbx9812"
 #define DATABASE "ist170940"
 
 	void Query(CString query);
@@ -31,7 +31,7 @@ public:
 	// Converts data from MySQL format to MFC's CString.
 	// My Queries
 	CString CheckName(CString ID_Name);
-	vector<CString> ListProduct();
+	CString ListProduct();
 
 
 	myconnectorclassDB();

@@ -42,20 +42,21 @@ CString myconnectorclassDB::CheckName(CString ID_Name) {
 	return value;
 }
 
-vector<CString> myconnectorclassDB::ListProduct() {
+CString myconnectorclassDB::ListProduct() {
 	vector<CString> value;
 	vector<CString> value1;
+	CString val;
 	
 
-	CString query = _T("SELECT  Plant.Plant_name, Plant.Plant_variety  FROM Plant");
+	CString query = _T("SELECT  Plant.Plant_name  FROM Plant");
 
 	Query(query);
 
 	while ((row = mysql_fetch_row(result)) != NULL) {
-		value.push_back(CPtoUnicode(row[0], 1251));
-		value1.push_back(CPtoUnicode(row[1], 1251));
+		val = CPtoUnicode(row[0], 1251);
+		
 	}
-	return value, value1;
+	return val;
 }
 
 void myconnectorclassDB::Query(CString query)

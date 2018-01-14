@@ -10,6 +10,7 @@
 #include "ContactDlg.h"
 #include "ListsDlg.h"
 #include "Example.h"
+#include "Login.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -66,6 +67,7 @@ void CMFCApplication2Dlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_EDIT_ID_Name, ID_Name);
 	DDX_Text(pDX, IDC_EDIT_Name, Name);
+	DDX_Control(pDX, IDC_COMBO1, m_comboBoxCtrl);
 }
 
 BEGIN_MESSAGE_MAP(CMFCApplication2Dlg, CDialogEx)
@@ -78,12 +80,13 @@ BEGIN_MESSAGE_MAP(CMFCApplication2Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_Lists, &CMFCApplication2Dlg::OnBnClickedButtonLists)
 	ON_BN_CLICKED(IDC_CHECK1, &CMFCApplication2Dlg::OnBnClickedCheck1)
 	ON_BN_CLICKED(IDC_BUTTON_Example, &CMFCApplication2Dlg::OnBnClickedButtonExample)
+	ON_BN_CLICKED(IDC_BUTTON_Login, &CMFCApplication2Dlg::OnBnClickedButtonLogin)
 END_MESSAGE_MAP()
 
 
 // CMFCApplication2Dlg message handlers
 
-BOOL CMFCApplication2Dlg::OnInitDialog()
+BOOL CMFCApplication2Dlg::OnInitDialog() 
 {
 	CDialogEx::OnInitDialog();
 
@@ -113,6 +116,12 @@ BOOL CMFCApplication2Dlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
+
+	CString str;
+	for (int i = 0; i<10; i++) {
+		str.Format(_T("Item %d"), i);
+		m_comboBoxCtrl.AddString(str);
+	}
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -214,4 +223,13 @@ void CMFCApplication2Dlg::OnBnClickedButtonExample()
 	// TODO: Add your control notification handler code here
 	CExample dlgExample;
 	dlgExample.DoModal();
+}
+
+
+void CMFCApplication2Dlg::OnBnClickedButtonLogin()
+{
+	// TODO: Add your control notification handler code here
+	CLogin login;
+	login.DoModal();
+
 }

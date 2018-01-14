@@ -48,15 +48,16 @@ END_MESSAGE_MAP()
 
 void CListsDlg::OnBnClickedCheck1()
 {
-	vector<CString> list;
+	CString list;
 	vector<CString> list1;
 	CString s;
 
 	myconnectorclassDB MyConnection;
 	MyConnection.connect();
+
 	UpdateData(TRUE);
-	list, list1 = MyConnection.ListProduct();
-	v_output.Format(_T("\r\n%s"), list[0]);
+	list = MyConnection.ListProduct();
+	v_output.Format(_T("\r\n%s"), list);
 	UpdateData(FALSE);
 	
 	// TODO: Add your control notification handler code here

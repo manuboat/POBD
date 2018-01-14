@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "afxwin.h"
 
 
 // CMFCApplication2Dlg dialog
@@ -40,4 +41,6 @@ public:
 	afx_msg void OnBnClickedButtonLists();
 	afx_msg void OnBnClickedCheck1();
 	afx_msg void OnBnClickedButtonExample();
+	afx_msg void OnBnClickedButtonLogin();
+	CComboBox m_comboBoxCtrl;
 };
