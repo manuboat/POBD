@@ -48,7 +48,7 @@ END_MESSAGE_MAP()
 
 void CListsDlg::OnBnClickedCheck1()
 {
-	CString list;
+	vector<CString> list;
 	vector<CString> list1;
 	CString s;
 
@@ -56,8 +56,13 @@ void CListsDlg::OnBnClickedCheck1()
 	MyConnection.connect();
 
 	UpdateData(TRUE);
-	list = MyConnection.ListProduct();
-	v_output.Format(_T("\r\n%s"), list);
+	if (v_FlagCheck1 == (BOOL)true){
+	list1, list = MyConnection.ListProduct();
+	v_output.Format(_T("Plant\r\n%s\r\n%s\r\n%s"), list1[0], list1[1], list1[2]);
+	}
+	else {
+		v_output = " ";
+	}
 	UpdateData(FALSE);
 	
 	// TODO: Add your control notification handler code here

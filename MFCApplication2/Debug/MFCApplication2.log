@@ -1,16 +1,3 @@
-﻿  stdafx.cpp
-  Table.cpp
-  Producer.cpp
-  myconnectorclassDB.cpp
-  MFCApplication2Dlg.cpp
-  MFCApplication2.cpp
-  LoginTxt.cpp
-  Login.cpp
-  ListsDlg.cpp
-  Example.cpp
-  ContactDlg.cpp
-  ClientDlg.cpp
-  Administrator.cpp
-  Generating Code...
-  MFCApplication2.vcxproj -> C:\Users\David\Documents\GitHub\POBD\Debug\MFCApplication2.exe
-  MFCApplication2.vcxproj -> C:\Users\David\Documents\GitHub\POBD\Debug\MFCApplication2.pdb (Partial PDB)
+﻿  myconnectorclassDB.cpp
+  MFCApplication2.vcxproj -> C:\Users\Manuel\Documents\GitHub\POBD\Debug\MFCApplication2.exe
+  MFCApplication2.vcxproj -> C:\Users\Manuel\Documents\GitHub\POBD\Debug\MFCApplication2.pdb (Partial PDB)

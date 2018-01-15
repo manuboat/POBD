@@ -31,7 +31,7 @@ public:
 	// Converts data from MySQL format to MFC's CString.
 	// My Queries
 	CString CheckName(CString ID_Name);
-	CString ListProduct();
+	vector<CString> ListProduct();
 
 
 	myconnectorclassDB();
