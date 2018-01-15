@@ -20,6 +20,7 @@ private:
 	MYSQL *connection;
 
 public:
+	int za;
 	MYSQL_ROW row; // Another object based on the existing
 				   // library, this one stores a single row from queries
 	MYSQL_RES *result; // and this one the entire result
