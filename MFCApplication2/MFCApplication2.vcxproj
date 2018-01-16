@@ -191,6 +191,7 @@
     <ClInclude Include="ClientDlg.h" />
     <ClInclude Include="ContactDlg.h" />
     <ClInclude Include="Example.h" />
+    <ClInclude Include="JoseDlg.h" />
     <ClInclude Include="ListsDlg.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="LoginTxt.h" />
@@ -208,6 +209,7 @@
     <ClCompile Include="ClientDlg.cpp" />
     <ClCompile Include="ContactDlg.cpp" />
     <ClCompile Include="Example.cpp" />
+    <ClCompile Include="JoseDlg.cpp" />
     <ClCompile Include="ListsDlg.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="LoginTxt.cpp" />

@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "MFCApplication2.h"
 #include "MFCApplication2Dlg.h"
+#include "Login.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -71,7 +72,7 @@ BOOL CMFCApplication2App::InitInstance()
 	// such as the name of your company or organization
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 
-	CMFCApplication2Dlg dlg;
+	CLogin dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)

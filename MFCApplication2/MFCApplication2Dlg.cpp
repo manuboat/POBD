@@ -11,6 +11,7 @@
 #include "ListsDlg.h"
 #include "Example.h"
 #include "Login.h"
+#include "JoseDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -81,6 +82,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication2Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_CHECK1, &CMFCApplication2Dlg::OnBnClickedCheck1)
 	ON_BN_CLICKED(IDC_BUTTON_Example, &CMFCApplication2Dlg::OnBnClickedButtonExample)
 	ON_BN_CLICKED(IDC_BUTTON_Login, &CMFCApplication2Dlg::OnBnClickedButtonLogin)
+	ON_BN_CLICKED(IDC_BUTTON1, &CMFCApplication2Dlg::OnBnClickedButton1)
 END_MESSAGE_MAP()
 
 
@@ -231,5 +233,14 @@ void CMFCApplication2Dlg::OnBnClickedButtonLogin()
 	// TODO: Add your control notification handler code here
 	CLogin login;
 	login.DoModal();
+
+}
+
+
+void CMFCApplication2Dlg::OnBnClickedButton1()
+{
+	// TODO: Add your control notification handler code here
+	JoseDlg davidDlg;
+	davidDlg.DoModal();
 
 }

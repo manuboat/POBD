@@ -5,6 +5,7 @@
 #include "MFCApplication2.h"
 #include "ClientDlg.h"
 #include "afxdialogex.h"
+#include "Login.h"
 
 
 // CClientDlg dialog
@@ -28,7 +29,22 @@ void CClientDlg::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CClientDlg, CDialogEx)
+	ON_BN_CLICKED(IDOK, &CClientDlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
 // CClientDlg message handlers
+
+
+void CClientDlg::OnBnClickedOk()
+{
+	// TODO: Add your control notification handler code here
+	CDialogEx::OnOK();
+
+	ShowWindow(SW_HIDE);
+
+	CLogin dlg;
+	dlg.DoModal();
+
+	EndDialog(0);
+}

@@ -48,6 +48,8 @@ void CLogin::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_Password, m_password);
 }
 
+
+
 BOOL CLogin::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
@@ -93,14 +95,22 @@ void CLogin::OnBnClickedButtonLogin()
 			if (People.type[i].c_str() == str1){
 				CAdministratorDlg Admin;
 				Admin.DoModal();
+				
+				
 		        }
 			if (People.type[i].c_str() == str2) {
+				ShowWindow(SW_HIDE);
+
 				CClientDlg Client;
 				Client.DoModal();
+
+				EndDialog( 0 );
+				
 			}
 			if (People.type[i].c_str() == str3) {
 				CProducerDlg Producer;
 				Producer.DoModal();
+				
 			}
 			Flag = true;
 			break;
