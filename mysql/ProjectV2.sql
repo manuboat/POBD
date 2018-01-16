@@ -51,7 +51,7 @@ CREATE TABLE `Plant`
 
 ;
 
-CREATE TABLE `Order`
+CREATE TABLE `T_Order`
 (
 	`ID_Order` VARCHAR(50) NOT NULL,
 	`Date` DATE 	,
@@ -113,10 +113,54 @@ CREATE TABLE `Costumer`
 SET FOREIGN_KEY_CHECKS=1 ;
 
 -- Populate Tables
-load data local infile 'C:\\Users\\Manuel\\Documents\\GitHub\\POBD\\mysql\\CSV\\Plant.csv' 
-into table Plant 
-fields terminated by ';'
+-- "C:\Users\David\Documents\GitHub\POBD\mysql\CSV\Order.csv"
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Warehouse.csv'
+into table Warehouse  
+fields terminated by ','
+lines terminated by '\r\n'
+ignore 1 lines;
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Costumer.csv'
+into table Costumer
+fields terminated by ','
 lines terminated by '\r\n';
+
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Plant.csv'
+into table Plant
+fields terminated by ','
+lines terminated by '\r\n';
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Order.csv'
+into table T_Order
+fields terminated by ','
+lines terminated by '\r\n';
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\r_Produced.csv'
+into table Produced
+fields terminated by ','
+lines terminated by '\r\n';
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Farm.csv'
+into table Farm
+fields terminated by ','
+lines terminated by '\r\n';
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\r_makes.csv'
+into table Makes 
+fields terminated by ','
+lines terminated by '\r\n';
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\r_include.csv'
+into table Include
+fields terminated by ','
+lines terminated by '\r\n';
+
+
+select * from Plant
+
+
 /*
 load data local infile 'C:\\Users\\Manuel\\CSV\\Costumer.csv' 
 into table Costumer
