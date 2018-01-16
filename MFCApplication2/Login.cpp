@@ -153,6 +153,7 @@ void CLogin::OnBnClickedButtonRegister()
 	}
 	else{
 
+		
 	CLoginTxt People;
 
 	for (unsigned int i = 0; i < People.user.size(); i++)

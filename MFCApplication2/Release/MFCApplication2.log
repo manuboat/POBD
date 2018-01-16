@@ -1,0 +1,19 @@
+﻿  stdafx.cpp
+  Administrator.cpp
+  ClientDlg.cpp
+  ContactDlg.cpp
+  Example.cpp
+  JoseDlg.cpp
+  ListsDlg.cpp
+  Login.cpp
+  LoginTxt.cpp
+  MFCApplication2.cpp
+  MFCApplication2Dlg.cpp
+  myconnectorclassDB.cpp
+  Producer.cpp
+  Table.cpp
+  Generating code
+  All 758 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  MFCApplication2.vcxproj -> C:\Users\Manuel\Documents\GitHub\POBD\Release\MFCApplication2.exe
+  MFCApplication2.vcxproj -> C:\Users\Manuel\Documents\GitHub\POBD\Release\MFCApplication2.pdb (Full PDB)
