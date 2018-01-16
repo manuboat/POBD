@@ -1,5 +1,6 @@
-ID	Name	Adress	Owner
-1	Herdade Vale da Rosa	Alentego	Manel
-2	Quinta Jose Maria da Fonseca	Algarve	David
-3	WesternComboys	Texas	Duarte
-4	Ze Wars	Coucenehira	José
+sep=,
+ID,	Name,	  Adress,	Owner
+1,	Herdade,  Vale da Rosa,	Alentego,	Manel
+2,	Quinta Jose Maria da Fonseca,	Algarve,	David
+3,	WesternComboys, Texas,	Duarte
+4, Ze Wars,	Coucenehira,	José

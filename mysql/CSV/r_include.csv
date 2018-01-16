@@ -1,4 +1,5 @@
-ID_Order	ID_Plant	ID_Farm	ID_WH	Amount
-1	3	President	1	10
-2	2	Comercial	2	20
-3	1	Staff	3	30
+sep=,
+ID_Order,	ID_Plant,	ID_Farm,	ID_WH,	Amount
+1,	3,	President,	1,	10
+2,	2,	Comercial,	2,  20
+3,  1,	Staff,   	3,  30
