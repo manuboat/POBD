@@ -42,9 +42,8 @@ CString myconnectorclassDB::CheckName(CString ID_Name) {
 	return value;
 }
 
-vector<CString> myconnectorclassDB::ListProduct() {
-	vector<CString> value;
-	vector<CString> value1;
+void myconnectorclassDB::ListProduct() {
+	
 	CString val;
 	
 
@@ -57,7 +56,7 @@ vector<CString> myconnectorclassDB::ListProduct() {
 		value1.push_back(CPtoUnicode(row[1], 1251));
 		
 	}
-	return value,value1;
+	
 }
 
 void myconnectorclassDB::Query(CString query)
