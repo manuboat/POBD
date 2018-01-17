@@ -20,9 +20,7 @@ CREATE TABLE `Warehouse`
 	`Location` VARCHAR(50) 	,
 	`Capacity` INT 	,
 	CONSTRAINT `PK_Table1` PRIMARY KEY (`ID_Warehouse`)
-)
-
-;
+);
 
 CREATE TABLE `Produced`
 (
@@ -119,43 +117,50 @@ load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\W
 into table Warehouse  
 fields terminated by ','
 lines terminated by '\r\n'
-ignore 1 lines;
+IGNORE 1 ROWs;
 
 load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Costumer.csv'
 into table Costumer
 fields terminated by ','
-lines terminated by '\r\n';
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
 
 
 load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Plant.csv'
 into table Plant
 fields terminated by ','
-lines terminated by '\r\n';
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
 
 load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Order.csv'
 into table T_Order
 fields terminated by ','
-lines terminated by '\r\n';
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
 
 load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\r_Produced.csv'
 into table Produced
 fields terminated by ','
-lines terminated by '\r\n';
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
 
 load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Farm.csv'
 into table Farm
 fields terminated by ','
-lines terminated by '\r\n';
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
 
 load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\r_makes.csv'
 into table Makes 
 fields terminated by ','
-lines terminated by '\r\n';
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
 
 load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\r_include.csv'
 into table Include
 fields terminated by ','
-lines terminated by '\r\n';
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
 
 
 select * from Plant
