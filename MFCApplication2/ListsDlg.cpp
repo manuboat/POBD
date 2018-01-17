@@ -57,8 +57,10 @@ void CListsDlg::OnBnClickedCheck1()
 
 	UpdateData(TRUE);
 	if (v_FlagCheck1 == (BOOL)true){
-	list1, list = MyConnection.ListProduct();
-	v_output.Format(_T("Plant\r\n%s\r\n%s\r\n%s"), list1[0], list1[1], list1[2]);
+	MyConnection.ListProduct();
+	list = MyConnection.value;
+	list1 = MyConnection.value1;
+	v_output.Format(_T("Plant\r\n%s\r\n%s\r\n%s"), list1[0], list1[1], list[0]);
 	}
 	else {
 		v_output = " ";
