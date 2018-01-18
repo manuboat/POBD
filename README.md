@@ -2,9 +2,3 @@
 
 
 Manel e David
-
-
-# To Do:
-- Login
-- Register
-
