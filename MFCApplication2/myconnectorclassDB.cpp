@@ -29,10 +29,23 @@ void myconnectorclassDB::connect() {
 	}
 }
 
+void myconnectorclassDB::SpecificProduct(CString Name) {
+	CString value;
+
+	CString query = _T("SELECT Costumer.Name FROM Costumer WHERE Costumer.ID_Costumer =") + Name + _T("");
+
+	Query(query);
+
+	while ((row = mysql_fetch_row(result)) != NULL) {
+		value = CPtoUnicode(row[0], 1251);
+	}
+
+}
+
 CString myconnectorclassDB::CheckName(CString ID_Name) {
 	CString value;
 
-	CString query = _T("SELECT Costumer.Costumer_Name FROM Costumer WHERE Costumer.ID_Costumer =") + ID_Name + _T("");
+	CString query = _T("SELECT Costumer.Name FROM Costumer WHERE Costumer.ID_Costumer =") + ID_Name + _T("");
 
 	Query(query);
 
@@ -43,21 +56,34 @@ CString myconnectorclassDB::CheckName(CString ID_Name) {
 }
 
 void myconnectorclassDB::ListProduct() {
-	
-	CString val;
+
 	
 
-	CString query = _T("SELECT  needs.ID_Plant, needs.ID_Warehouse  FROM needs");
+	CString query = _T("SELECT  * FROM Plant");
 
 	Query(query);
 
 	while ((row = mysql_fetch_row(result)) != NULL) {
 		value.push_back(CPtoUnicode(row[0], 1251));
 		value1.push_back(CPtoUnicode(row[1], 1251));
-		
+		value2.push_back(CPtoUnicode(row[2], 1251));
+		value3.push_back(CPtoUnicode(row[3], 1251));
+		value4.push_back(CPtoUnicode(row[4], 1251));
 	}
 	
 }
+
+void myconnectorclassDB::InsertProduct() {
+
+
+
+	CString query = _T("insert into Plant	values(1,'Tomato','Cherry','Bio',6);");
+
+	Query(query);
+
+
+}
+
 
 void myconnectorclassDB::Query(CString query)
 {

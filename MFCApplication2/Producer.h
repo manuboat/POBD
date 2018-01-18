@@ -1,5 +1,5 @@
 #pragma once
-
+#include "afxwin.h"
 
 // CProducer dialog
 
@@ -10,7 +10,7 @@ class CProducerDlg : public CDialogEx
 public:
 	CProducerDlg(CWnd* pParent = NULL);   // standard constructor
 	virtual ~CProducerDlg();
-
+	virtual BOOL OnInitDialog();
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_DIALOG3 };
@@ -18,6 +18,10 @@ public:
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-
+	
 	DECLARE_MESSAGE_MAP()
+public:
+
+
+	
 };

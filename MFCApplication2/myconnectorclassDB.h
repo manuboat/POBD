@@ -20,7 +20,7 @@ private:
 	MYSQL *connection;
 
 public:
-	int za;
+	
 	MYSQL_ROW row; // Another object based on the existing
 				   // library, this one stores a single row from queries
 	MYSQL_RES *result; // and this one the entire result
@@ -33,9 +33,15 @@ public:
 	// My Queries
 	CString CheckName(CString ID_Name);
 	void ListProduct();
+	void InsertProduct();
+	void SpecificProduct(CString Name);
 
 	vector<CString> value;
 	vector<CString> value1;
+	vector<CString> value2;
+	vector<CString> value3;
+	vector<CString> value4;
+	vector<CString> value5;
 
 
 	myconnectorclassDB();
