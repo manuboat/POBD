@@ -4,6 +4,13 @@
 /*  DBMS       : MySql 						*/
 /* ---------------------------------------------------- */
 
+DROP DATABASE IF EXISTS
+ist170940;
+CREATE SCHEMA IF NOT EXISTS
+ist170940;
+USE ist170940;
+
+
 SET FOREIGN_KEY_CHECKS=0 ;
 
 /* Create Tables */
@@ -65,17 +72,7 @@ CREATE TABLE `Makes`
 
 ;
 
-CREATE TABLE `Include`
-(
-	`ID_Order` INT NOT NULL,
-	`ID_Plant` INT NOT NULL,
-	`ID_Farm` INT NOT NULL,
-	`ID_Warehouse` INT NOT NULL,
-	`Amount` INT 	,
-	CONSTRAINT `PK_Include` PRIMARY KEY (`ID_Order`,`ID_Plant`,`ID_Farm`,`ID_Warehouse`)
-)
 
-;
 
 CREATE TABLE `Farm`
 (
@@ -96,6 +93,18 @@ CREATE TABLE `Costumer`
 	`Phone` VARCHAR(50) 	,
 	`Address` VARCHAR(50) 	,
 	CONSTRAINT `Costumer` PRIMARY KEY (`ID_Costumer`)
+)
+
+;
+
+CREATE TABLE `Include`
+(
+	`ID_Order` INT NOT NULL,
+	`ID_Plant` INT NOT NULL,
+	`ID_Farm` INT NOT NULL,
+	`ID_Warehouse` INT NOT NULL,
+	`Amount` INT 	,
+	CONSTRAINT `PK_Include` PRIMARY KEY (`ID_Order`,`ID_Plant`,`ID_Farm`,`ID_Warehouse`)
 )
 
 ;
@@ -138,3 +147,59 @@ ALTER TABLE `Include`
 ;
 
 SET FOREIGN_KEY_CHECKS=1 ;
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Warehouse.csv'
+into table Warehouse  
+fields terminated by ','
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Costumer.csv'
+into table Costumer
+fields terminated by ','
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
+
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Plant.csv'
+into table Plant
+fields terminated by ','
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Order.csv'
+into table T_Order
+fields terminated by ','
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
+
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\Farm.csv'
+into table Farm
+fields terminated by ','
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
+
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\r_makes.csv'
+into table Makes 
+fields terminated by ','
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
+
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\r_Produced.csv'
+into table Produced
+fields terminated by ','
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
+
+load data local infile 'C:\\Users\\David\\Documents\\GitHub\\POBD\\mysql\\CSV\\r_include.csv'
+into table Include
+fields terminated by ','
+lines terminated by '\r\n'
+IGNORE 1 ROWs;
+
+
+
+select * from Include;
