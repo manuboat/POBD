@@ -1,6 +1,6 @@
 # Client
 	- [x] Devolver uma tabela da Produced e não da Plant ATENÇÂO!!!! porque o cliente so comprar o que já exixtir em armazém. Repito o query é feito á tabela Produced
-	- [ ] Dar o preço de um item
+	- [x] Dar o preço de um item
 	- [x] ultima order
 	- [ ] Storage time 
 	- [ ] quantos dias ate ficar fora de validade
