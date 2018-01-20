@@ -29,24 +29,29 @@ void myconnectorclassDB::connect() {
 	}
 }
 
-void myconnectorclassDB::SpecificProduct(CString Name) {
-	CString value;
+void myconnectorclassDB::ListOptions(CString Name, CString Item) {
 
-	CString query = _T("SELECT Costumer.Name FROM Costumer WHERE Costumer.ID_Costumer =") + Name + _T("");
+	CString query = _T("select * from Plant where ") + Name + _T(" = '") + Item + _T("'");
 
 	Query(query);
 
 	while ((row = mysql_fetch_row(result)) != NULL) {
-		value = CPtoUnicode(row[0], 1251);
+		value.push_back(CPtoUnicode(row[0], 1251));
+		value1.push_back(CPtoUnicode(row[1], 1251));
+		value2.push_back(CPtoUnicode(row[2], 1251));
+		value3.push_back(CPtoUnicode(row[3], 1251));
+		value4.push_back(CPtoUnicode(row[4], 1251));
+		value5.push_back(CPtoUnicode(row[5], 1251));
 	}
 
 }
 
+
+
 CString myconnectorclassDB::CheckName(CString ID_Name) {
 	CString value;
-
+	
 	CString query = _T("SELECT Costumer.Name FROM Costumer WHERE Costumer.ID_Costumer =") + ID_Name + _T("");
-
 	Query(query);
 
 	while ((row = mysql_fetch_row(result)) != NULL) {
@@ -59,30 +64,65 @@ void myconnectorclassDB::ListProduct() {
 
 	
 
-	CString query = _T("SELECT  * FROM Plant");
+	CString query = _T("select p.Name as 'Name' from Plant as p, Include as i where i.ID_Plant = p.ID_Plant	group by Name; ");
 
 	Query(query);
 
 	while ((row = mysql_fetch_row(result)) != NULL) {
 		value.push_back(CPtoUnicode(row[0], 1251));
-		value1.push_back(CPtoUnicode(row[1], 1251));
-		value2.push_back(CPtoUnicode(row[2], 1251));
-		value3.push_back(CPtoUnicode(row[3], 1251));
-		value4.push_back(CPtoUnicode(row[4], 1251));
+		
 	}
 	
 }
 
-void myconnectorclassDB::InsertProduct() {
+void myconnectorclassDB::ListType(){
 
-
-
-	CString query = _T("insert into Plant	values(1,'Tomato','Cherry','Bio',6);");
+	CString query = _T("select p.Type as 'Type' from Plant as p, Include as i where i.ID_Plant = p.ID_Plant	group by Type; ");
 
 	Query(query);
 
+	while ((row = mysql_fetch_row(result)) != NULL) {
+		value.push_back(CPtoUnicode(row[0], 1251));
+
+	}
 
 }
+
+void myconnectorclassDB::ListFamily() {
+
+	CString query = _T("select p.Family as 'Family' from Plant as p, Include as i where i.ID_Plant = p.ID_Plant	group by Type; ");
+
+	Query(query);
+
+	while ((row = mysql_fetch_row(result)) != NULL) {
+		value.push_back(CPtoUnicode(row[0], 1251));
+
+	}
+
+}
+
+void myconnectorclassDB::InsertProduct() {
+
+	CString value;
+
+	CString query = _T("INSERT INTO Plant (`ID_Plant`,`Name`,`Variety`,`Type`,`MST`,`Family`) VALUES (16,'Alface','Roxa','BIO',10,'Fruta')");
+	Query(query);
+
+}
+
+CString myconnectorclassDB::GetUnitPrice(CString ID) {
+	CString value;
+
+	CString query = _T("select Unit_Price from Produced where ID_Plant =") + ID + _T("");
+	Query(query);
+
+	while ((row = mysql_fetch_row(result)) != NULL) {
+		value = CPtoUnicode(row[0], 1251);
+	}
+	return value;
+}
+
+
 
 
 void myconnectorclassDB::Query(CString query)

@@ -33,8 +33,11 @@ public:
 	// My Queries
 	CString CheckName(CString ID_Name);
 	void ListProduct();
+	void ListType();
 	void InsertProduct();
-	void SpecificProduct(CString Name);
+	void ListFamily();
+	void ListOptions(CString Name, CString Item);
+	CString GetUnitPrice(CString ID);
 
 	vector<CString> value;
 	vector<CString> value1;
