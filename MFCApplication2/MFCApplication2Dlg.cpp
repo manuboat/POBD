@@ -36,6 +36,8 @@ public:
 // Implementation
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnBnClickedButtonLoadpng();
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
@@ -48,6 +50,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
+
 END_MESSAGE_MAP()
 
 
@@ -147,6 +150,7 @@ void CMFCApplication2Dlg::OnSysCommand(UINT nID, LPARAM lParam)
 
 void CMFCApplication2Dlg::OnPaint()
 {
+
 	if (IsIconic())
 	{
 		CPaintDC dc(this); // device context for painting
@@ -244,3 +248,6 @@ void CMFCApplication2Dlg::OnBnClickedButton1()
 	davidDlg.DoModal();
 
 }
+
+
+

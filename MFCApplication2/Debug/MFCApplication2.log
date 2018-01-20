@@ -1,6 +1,6 @@
 ﻿  stdafx.cpp
   Table.cpp
-  Producer.cpp
+  ProducerDlg.cpp
   myconnectorclassDB.cpp
   MFCApplication2Dlg.cpp
   MFCApplication2.cpp
@@ -14,7 +14,6 @@ c:\users\manuel\documents\github\pobd\mfcapplication2\listsdlg.cpp(267): warning
   Example.cpp
   ContactDlg.cpp
   ClientDlg.cpp
-  Administrator.cpp
   Generating Code...
   MFCApplication2.vcxproj -> C:\Users\Manuel\Documents\GitHub\POBD\Debug\MFCApplication2.exe
   MFCApplication2.vcxproj -> C:\Users\Manuel\Documents\GitHub\POBD\Debug\MFCApplication2.pdb (Partial PDB)

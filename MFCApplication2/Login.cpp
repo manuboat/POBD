@@ -12,7 +12,7 @@
 #include "LoginTxt.h"
 #include <Cstring>
 #include "Administrator.h"
-#include "Producer.h"
+#include "ProducerDlg.h"
 #include "ClientDlg.h"
 #include <iomanip>
 
@@ -93,8 +93,8 @@ void CLogin::OnBnClickedButtonLogin()
 		if (People.user[i].c_str() == m_username && People.pass[i].c_str() == m_password && People.type[i].c_str() == m_type )
 		{
 			if (People.type[i].c_str() == str1){
-				CAdministratorDlg Admin;
-				Admin.DoModal();
+				//CAdministratorDlg Admin;
+				//Admin.DoModal();
 				
 				
 		        }
@@ -108,7 +108,7 @@ void CLogin::OnBnClickedButtonLogin()
 				
 			}
 			if (People.type[i].c_str() == str3) {
-				CProducerDlg Producer;
+			ProducerDlg Producer;
 				Producer.DoModal();
 				
 			}

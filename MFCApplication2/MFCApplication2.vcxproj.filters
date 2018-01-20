@@ -57,13 +57,10 @@
     <ClInclude Include="ClientDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Producer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Administrator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="JoseDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProducerDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -101,13 +98,10 @@
     <ClCompile Include="ClientDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Producer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Administrator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="JoseDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProducerDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

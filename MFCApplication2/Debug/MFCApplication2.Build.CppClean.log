@@ -2,7 +2,6 @@ c:\users\manuel\documents\github\pobd\mfcapplication2\debug\mfcapplication2.pch
 c:\users\manuel\documents\github\pobd\mfcapplication2\debug\vc140.pdb
 c:\users\manuel\documents\github\pobd\mfcapplication2\debug\vc140.idb
 c:\users\manuel\documents\github\pobd\mfcapplication2\debug\stdafx.obj
-c:\users\manuel\documents\github\pobd\mfcapplication2\debug\administrator.obj
 c:\users\manuel\documents\github\pobd\mfcapplication2\debug\clientdlg.obj
 c:\users\manuel\documents\github\pobd\mfcapplication2\debug\contactdlg.obj
 c:\users\manuel\documents\github\pobd\mfcapplication2\debug\example.obj
@@ -13,7 +12,7 @@ c:\users\manuel\documents\github\pobd\mfcapplication2\debug\logintxt.obj
 c:\users\manuel\documents\github\pobd\mfcapplication2\debug\mfcapplication2.obj
 c:\users\manuel\documents\github\pobd\mfcapplication2\debug\mfcapplication2dlg.obj
 c:\users\manuel\documents\github\pobd\mfcapplication2\debug\myconnectorclassdb.obj
-c:\users\manuel\documents\github\pobd\mfcapplication2\debug\producer.obj
+c:\users\manuel\documents\github\pobd\mfcapplication2\debug\producerdlg.obj
 c:\users\manuel\documents\github\pobd\mfcapplication2\debug\table.obj
 c:\users\manuel\documents\github\pobd\debug\mfcapplication2.ilk
 c:\users\manuel\documents\github\pobd\debug\mfcapplication2.exe

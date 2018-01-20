@@ -122,7 +122,38 @@ CString myconnectorclassDB::GetUnitPrice(CString ID) {
 	return value;
 }
 
+void myconnectorclassDB::InsertPlant(CString Name, CString Variety, CString Type, CString MST, CString Family){
 
+	
+	CString query = _T("INSERT INTO Plant (`Name`,`Variety`,`Type`,`MST`,`Family`) VALUES	( '") + Name + _T("', '") + Variety + _T("', '") + Type + _T("', '") + MST + _T("', '") + Family + _T("'); ");
+	Query(query);
+
+
+
+};
+
+void myconnectorclassDB::InsertProduced(CString Plant, CString Farm, CString Warehouse, CString Amount, CString UnitPrice, CString Date) {
+
+
+	CString query = _T("INSERT INTO Produced (`IDPlant`,`IDFarm`,`IDWarehouse`,`Amount`,`UnitPrice`,`Date`) VALUES	( '") + Plant + _T("', '") + Farm + _T("', '") + Warehouse + _T("', '") + Amount + _T("', '") + UnitPrice + _T("', '") + Date + _T("'); ");
+	Query(query);
+
+
+
+};
+
+CString myconnectorclassDB::GetID(CString Name){
+	CString value;
+
+	CString query = _T("select IDPlant from Plant where Name ='") + Name + _T("'");
+	Query(query);
+
+	while ((row = mysql_fetch_row(result)) != NULL) {
+		value = CPtoUnicode(row[0], 1251);
+	}
+	return value;
+
+};
 
 
 void myconnectorclassDB::Query(CString query)

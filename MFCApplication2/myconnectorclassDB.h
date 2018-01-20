@@ -38,7 +38,9 @@ public:
 	void ListFamily();
 	void ListOptions(CString Name, CString Item);
 	CString GetUnitPrice(CString ID);
-
+	void InsertPlant(CString Name, CString Variety, CString Type, CString MST, CString Family);
+	void InsertProduced(CString Plant, CString Farm, CString Warehouse, CString Amount, CString UnitPrice, CString Date);
+	CString GetID(CString Name);
 	vector<CString> value;
 	vector<CString> value1;
 	vector<CString> value2;

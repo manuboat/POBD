@@ -189,7 +189,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Administrator.h" />
     <ClInclude Include="ClientDlg.h" />
     <ClInclude Include="ContactDlg.h" />
     <ClInclude Include="Example.h" />
@@ -200,14 +199,13 @@
     <ClInclude Include="MFCApplication2.h" />
     <ClInclude Include="MFCApplication2Dlg.h" />
     <ClInclude Include="myconnectorclassDB.h" />
-    <ClInclude Include="Producer.h" />
+    <ClInclude Include="ProducerDlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Table.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Administrator.cpp" />
     <ClCompile Include="ClientDlg.cpp" />
     <ClCompile Include="ContactDlg.cpp" />
     <ClCompile Include="Example.cpp" />
@@ -218,7 +216,7 @@
     <ClCompile Include="MFCApplication2.cpp" />
     <ClCompile Include="MFCApplication2Dlg.cpp" />
     <ClCompile Include="myconnectorclassDB.cpp" />
-    <ClCompile Include="Producer.cpp" />
+    <ClCompile Include="ProducerDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
