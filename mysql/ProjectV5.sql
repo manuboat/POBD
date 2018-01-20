@@ -10,7 +10,7 @@ SET FOREIGN_KEY_CHECKS=0 ;
 
 CREATE TABLE `Warehouse`
 (
-	`IDWarehouse` INT NOT NULL,
+	`IDWarehouse` INT NOT NULL auto_increment,
 	`Location` VARCHAR(50) 	,
 	`Capacity` INT 	,
 	CONSTRAINT `PK_Table1` PRIMARY KEY (`IDWarehouse`)
@@ -20,7 +20,7 @@ CREATE TABLE `Warehouse`
 
 CREATE TABLE `TOrder`
 (
-	`IDOrder` INT NOT NULL,
+	`IDOrder` INT NOT NULL auto_increment,
 	`Date` DATE 	,
 	`Status` VARCHAR(50) 	,
 	`Cost` INT 	,
@@ -45,7 +45,7 @@ CREATE TABLE `Produced`
 
 CREATE TABLE `Plant`
 (
-	`IDPlant` INT NOT NULL,
+	`IDPlant` INT NOT NULL auto_increment,
 	`Name` VARCHAR(50) 	,
 	`Variety` VARCHAR(50) 	,
 	`Type` VARCHAR(50) 	,
@@ -79,7 +79,7 @@ CREATE TABLE `Include`
 
 CREATE TABLE `Farm`
 (
-	`IDFarm` INT NOT NULL,
+	`IDFarm` INT NOT NULL auto_increment,
 	`Name` VARCHAR(50) 	,
 	`Address` VARCHAR(50) 	,
 	`Owner` VARCHAR(50) 	,
@@ -90,7 +90,7 @@ CREATE TABLE `Farm`
 
 CREATE TABLE `Costumer`
 (
-	`IDCostumer` INT NOT NULL,
+	`IDCostumer` INT NOT NULL auto_increment,
 	`Name` VARCHAR(50) 	,
 	`Mail` VARCHAR(50) 	,
 	`Phone` VARCHAR(50) 	,
