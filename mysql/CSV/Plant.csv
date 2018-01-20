@@ -1,8 +1,8 @@
 ID, Name ,   	Category , 	Type, 	Max Storage Time , Family
 1,Tomato,Cherry,Bio	,30,Leguminosa
-2,Potato,Sweet,STD ,   5 ,Leguminosa
-3,Grape,Seedless,GMO	,   15,Fruta
-5,Tomato,Cherry,Bio	,6,Leguminosa
-7,Tomato,Cherry,Bio	,6,Leguminosa
-10,Tomato,Cherry,Bio	,6,Leguminosa
+2,Potato,Sweet,STD,5,Leguminosa
+3,Grape,Seedless,GMO,15,Fruta
+5,Tomato,Cherry,Bio,6,Leguminosa
+7,Tomato,Cherry,Bio,6,Leguminosa
+10,Tomato,Cherry,Bio,6,Leguminosa
 
