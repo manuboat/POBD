@@ -25,11 +25,7 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	BOOL v_FlagCheck1;
-	BOOL v_FlagCheck2;
-	afx_msg void OnBnClickedCheck1();
-	afx_msg void OnBnClickedCheck2();
-	CString v_output;
+	float v_output;
 	afx_msg void OnEnChangeEdit1();
 	BOOL OnInitDialog();
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
@@ -46,14 +42,22 @@ public:
 	CString m_ItemSelected;
 	afx_msg void OnLbnSelchangeList2();
 	CString m_Select_ID;
-	CString m_Unit_Price;
+	
 	CString m_Quantity;
 	CString m_Total_Price;
 	afx_msg void OnBnClickedButtonAddCart();
-	afx_msg void OnBnClickedCheck3();
+	
 	afx_msg void OnEnChangeEditSelectId();
 	
 	afx_msg void OnEnChangeEditQuantity();
 	CString m_timer;
 	CString M_timer;
+	BOOL v_FlagCheck3;
+	CString Search;
+	afx_msg void OnBnClickedRadio3();
+	afx_msg void OnBnClickedRadio1();
+	afx_msg void OnBnClickedRadio2();
+	float m_Unit_Price;
+
+	afx_msg void OnBnClickedButton1();
 };
