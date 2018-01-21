@@ -1,5 +1,5 @@
 -- Ocupacy
-select s.IDWarehouse, w.Location, s.Stored, w.Capacity
+select s.IDWarehouse, w.Location, concat(s.Stored/w.Capacity*100,'% ')as 'Sto', w.Capacity
 from (
 	select pp.IDWarehouse, sum(pp.Amount) as 'Stored'
 	from  Produced as pp
