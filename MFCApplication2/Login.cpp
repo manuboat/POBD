@@ -11,10 +11,11 @@
 #include <iostream>
 #include "LoginTxt.h"
 #include <Cstring>
-#include "Administrator.h"
+#include "CadDlg.h"
 #include "ProducerDlg.h"
 #include "ClientDlg.h"
 #include <iomanip>
+#include "ListsDlg.h"
 
 using namespace std;
 
@@ -93,15 +94,16 @@ void CLogin::OnBnClickedButtonLogin()
 		if (People.user[i].c_str() == m_username && People.pass[i].c_str() == m_password && People.type[i].c_str() == m_type )
 		{
 			if (People.type[i].c_str() == str1){
-				//CAdministratorDlg Admin;
-				//Admin.DoModal();
+				CadDlg Admin;
+				Admin.DoModal();
 				
 				
 		        }
 			if (People.type[i].c_str() == str2) {
 				ShowWindow(SW_HIDE);
 
-				CClientDlg Client;
+				CListsDlg Client;
+				Client.Costumer = m_username;
 				Client.DoModal();
 
 				EndDialog( 0 );

@@ -1,19 +1,6 @@
-﻿  stdafx.cpp
-  Table.cpp
-  ProducerDlg.cpp
-  myconnectorclassDB.cpp
-  MFCApplication2Dlg.cpp
-  MFCApplication2.cpp
-  LoginTxt.cpp
-  Login.cpp
-  ListsDlg.cpp
-c:\users\manuel\documents\github\pobd\mfcapplication2\listsdlg.cpp(219): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\manuel\documents\github\pobd\mfcapplication2\listsdlg.cpp(250): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\manuel\documents\github\pobd\mfcapplication2\listsdlg.cpp(267): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  JoseDlg.cpp
-  Example.cpp
-  ContactDlg.cpp
-  ClientDlg.cpp
-  Generating Code...
+﻿  ListsDlg.cpp
+c:\users\manuel\documents\github\pobd\mfcapplication2\listsdlg.cpp(235): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\manuel\documents\github\pobd\mfcapplication2\listsdlg.cpp(266): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\manuel\documents\github\pobd\mfcapplication2\listsdlg.cpp(283): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   MFCApplication2.vcxproj -> C:\Users\Manuel\Documents\GitHub\POBD\Debug\MFCApplication2.exe
   MFCApplication2.vcxproj -> C:\Users\Manuel\Documents\GitHub\POBD\Debug\MFCApplication2.pdb (Partial PDB)

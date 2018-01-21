@@ -189,6 +189,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdminDlg.h" />
+    <ClInclude Include="CadDlg.h" />
     <ClInclude Include="ClientDlg.h" />
     <ClInclude Include="ContactDlg.h" />
     <ClInclude Include="Example.h" />
@@ -206,6 +208,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdminDlg.cpp" />
+    <ClCompile Include="CadDlg.cpp" />
     <ClCompile Include="ClientDlg.cpp" />
     <ClCompile Include="ContactDlg.cpp" />
     <ClCompile Include="Example.cpp" />

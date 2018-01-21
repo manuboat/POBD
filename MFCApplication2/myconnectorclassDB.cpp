@@ -51,7 +51,7 @@ void myconnectorclassDB::ListOptions(CString Name, CString Item) {
 CString myconnectorclassDB::CheckName(CString ID_Name) {
 	CString value;
 	
-	CString query = _T("SELECT Costumer.Name FROM Costumer WHERE Costumer.ID_Costumer =") + ID_Name + _T("");
+	CString query = _T("SELECT Plant.Name FROM Plant WHERE Plant.IDPlant =") + ID_Name + _T("");
 	Query(query);
 
 	while ((row = mysql_fetch_row(result)) != NULL) {
@@ -60,11 +60,24 @@ CString myconnectorclassDB::CheckName(CString ID_Name) {
 	return value;
 }
 
+CString myconnectorclassDB::GetVariety(CString ID_Name) {
+	CString value;
+
+	CString query = _T("SELECT Plant.Variety FROM Plant WHERE Plant.IDPlant =") + ID_Name + _T("");
+	Query(query);
+
+	while ((row = mysql_fetch_row(result)) != NULL) {
+		value = CPtoUnicode(row[0], 1251);
+	}
+	return value;
+}
+
+
 void myconnectorclassDB::ListProduct() {
 
 	
 
-	CString query = _T("select p.Name as 'Name' from Plant as p, Include as i where i.ID_Plant = p.ID_Plant	group by Name; ");
+	CString query = _T("select p.Name as 'Name' from Plant as p, Include as i where i.IDPlant = p.IDPlant	group by Name; ");
 
 	Query(query);
 
@@ -77,7 +90,7 @@ void myconnectorclassDB::ListProduct() {
 
 void myconnectorclassDB::ListType(){
 
-	CString query = _T("select p.Type as 'Type' from Plant as p, Include as i where i.ID_Plant = p.ID_Plant	group by Type; ");
+	CString query = _T("select p.Type as 'Type' from Plant as p, Include as i where i.IDPlant = p.IDPlant	group by Type; ");
 
 	Query(query);
 
@@ -90,7 +103,7 @@ void myconnectorclassDB::ListType(){
 
 void myconnectorclassDB::ListFamily() {
 
-	CString query = _T("select p.Family as 'Family' from Plant as p, Include as i where i.ID_Plant = p.ID_Plant	group by Type; ");
+	CString query = _T("select p.Family as 'Family' from Plant as p, Include as i where i.IDPlant = p.IDPlant	group by Type; ");
 
 	Query(query);
 
@@ -105,7 +118,7 @@ void myconnectorclassDB::InsertProduct() {
 
 	CString value;
 
-	CString query = _T("INSERT INTO Plant (`ID_Plant`,`Name`,`Variety`,`Type`,`MST`,`Family`) VALUES (16,'Alface','Roxa','BIO',10,'Fruta')");
+	CString query = _T("INSERT INTO Plant (`IDPlant`,`Name`,`Variety`,`Type`,`MST`,`Family`) VALUES (16,'Alface','Roxa','BIO',10,'Fruta')");
 	Query(query);
 
 }
@@ -113,7 +126,7 @@ void myconnectorclassDB::InsertProduct() {
 CString myconnectorclassDB::GetUnitPrice(CString ID) {
 	CString value;
 
-	CString query = _T("select Unit_Price from Produced where ID_Plant =") + ID + _T("");
+	CString query = _T("select UnitPrice from Produced where IDPlant =") + ID + _T("");
 	Query(query);
 
 	while ((row = mysql_fetch_row(result)) != NULL) {
@@ -155,6 +168,63 @@ CString myconnectorclassDB::GetID(CString Name){
 
 };
 
+CString myconnectorclassDB::GetIDCostumer(CString Name) {
+	CString value;
+
+	CString query = _T("select IDCostumer from Costumer where Name ='") + Name + _T("'");
+	Query(query);
+
+	while ((row = mysql_fetch_row(result)) != NULL) {
+		value = CPtoUnicode(row[0], 1251);
+	}
+	return value;
+
+};
+
+void myconnectorclassDB::NewEntries() {
+
+	CString query = _T("select*from(select p.Name as'P',f.Name,w.Location as'W',pp.Amount,pp.UnitPrice,pp.Date from Plant as p,Farm as f,Warehouse as w,Produced as pp where p.IDPlant=pp.IDPlant and f.IDFarm=pp.IDFarm and w.IDWarehouse=pp.IDWarehouse)as R where W='New'");
+
+
+	Query(query);
+
+	while ((row = mysql_fetch_row(result)) != NULL) {
+		value.push_back(CPtoUnicode(row[0], 1251));
+		value1.push_back(CPtoUnicode(row[1], 1251));
+		value2.push_back(CPtoUnicode(row[2], 1251));
+		value3.push_back(CPtoUnicode(row[3], 1251));
+		value4.push_back(CPtoUnicode(row[4], 1251));
+		value5.push_back(CPtoUnicode(row[5], 1251));
+	}
+
+}
+
+
+void myconnectorclassDB::ChangeWarehouse(CString WareHouse, CString Plant) {
+
+
+	CString query = _T("UPDATE Produced SET IDWarehouse='")+ WareHouse +_T("' WHERE IDPLant='")+ Plant +_T("';");
+	Query(query);
+
+
+
+};
+
+void myconnectorclassDB::GetStatus() {
+
+	CString query = _T("select s.IDWarehouse,w.Location,s.Stored,w.Capacity from(select pp.IDWarehouse,sum(pp.Amount) as 'Stored' from Produced as pp group by pp.IDWarehouse) as s,Warehouse as w where s.IDWarehouse=w.IDWarehouse");
+
+
+	Query(query);
+
+	while ((row = mysql_fetch_row(result)) != NULL) {
+		value.push_back(CPtoUnicode(row[0], 1251));
+		value1.push_back(CPtoUnicode(row[1], 1251));
+		value2.push_back(CPtoUnicode(row[2], 1251));
+		value3.push_back(CPtoUnicode(row[3], 1251));
+	}
+
+}
 
 void myconnectorclassDB::Query(CString query)
 {

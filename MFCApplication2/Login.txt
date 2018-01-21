@@ -1,13 +1,4 @@
+1 1 Administrator
+2 2 Client
+3 3 Producer
 
-Manuel manuel1234 Client
-David david1234 Client
-Ruben ruben1234 Producer
-Joao joao1234 Producer
-wergw4t ertrher Client
-Jose jose Producer
-1 1 Client
-12 1 Producer
-13 12 Producer
-11 1 Producer
-ruben ruben1234 Client
-111 1 Producer

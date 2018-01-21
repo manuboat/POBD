@@ -48,6 +48,7 @@ void CListsDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_STATIC_TXT, m_timer);
 	DDX_Text(pDX, IDC_EDIT4, M_timer);
 	DDX_Text(pDX, IDC_EDIT_Unit_Price, m_Unit_Price);
+	DDX_Control(pDX, IDC_DATETIMEPICKER1, m_DateTime);
 }
 
 
@@ -156,11 +157,26 @@ void CListsDlg::OnTimer(UINT_PTR nIDEvent)
 	
 }
 
+int CListsDlg::rdn(int y, int m, int d) { /* Rata Die day one is 0001-01-01 */
+	if (m < 3)
+		y--, m += 12;
+	return 365 * y + y / 4 - y / 100 + y / 400 + (153 * m - 457) / 5 + d - 306;
+}
+
 
 void CListsDlg::OnDtnDatetimechangeDatetimepicker1(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	LPNMDATETIMECHANGE pDTChange = reinterpret_cast<LPNMDATETIMECHANGE>(pNMHDR);
 	// TODO: Add your control notification handler code here
+
+
+
+	iYear = pDTChange->st.wYear;
+	iMonth = pDTChange->st.wMonth;
+	iDay = pDTChange->st.wDay;
+	
+		
+
 	*pResult = 0;
 }
 
@@ -201,15 +217,15 @@ void CListsDlg::OnBnClickedButtonAddCart()
 	myconnectorclassDB Myconnector;
 	Myconnector.connect();
 
-
-
+	CString Name = Myconnector.CheckName(m_Select_ID);
+	CString Variety = Myconnector.GetVariety(m_Select_ID);
 	
 
 		int nItem;
 
 		nItem = m_listCtrl.InsertItem(0, m_Select_ID);
-		m_listCtrl.SetItemText(nItem, 1, r_Price);
-		m_listCtrl.SetItemText(nItem, 2, r_Price);
+		m_listCtrl.SetItemText(nItem, 1, Name);
+		m_listCtrl.SetItemText(nItem, 2, Variety);
 		m_listCtrl.SetItemText(nItem, 3, r_Price);
 		m_listCtrl.SetItemText(nItem, 4, m_Quantity);
 		m_listCtrl.SetItemText(nItem, 5, m_Total_Price);
@@ -332,13 +348,58 @@ void CListsDlg::OnBnClickedRadio3()
 
 
 
-
 void CListsDlg::OnBnClickedButton1()
 {
-	// TODO: Add your control notification handler code here
-	myconnectorclassDB Myconnector;
-	Myconnector.connect();
-	Myconnector.InsertProduct();
+	myconnectorclassDB Myconnection;
+	Myconnection.connect();
+	CString m_ID = Myconnection.GetIDCostumer(Costumer);
 
+	CTime CurrentTime = CTime::GetCurrentTime();
+
+	int fDay = CurrentTime.GetDay();
+	int fMonth = CurrentTime.GetMonth();
+	int fYear = CurrentTime.GetYear();
+	CString strDay, strMonth, strYear, m_Date;
+	strDay.Format(_T("%d"), iDay);
+	strMonth.Format(_T("%d"), iMonth);
+	strYear.Format(_T("%d"), iYear);
+	m_Date.Format(_T("%s/%s/%s"), strYear, strMonth, strDay);
+
+	int iETA = rdn(iYear, iMonth, iDay) - rdn(fYear, fMonth, fDay);
+	// Automatizar a entrada desta coluna!!
+	CString ETA;
+	ETA.Format(_T("%d"), iETA);
+	CString  Status;
+	if(iETA = 0){ 
+		Status = "Delivered";
+	}if(iETA > 0 && iETA <= 3) {
+		Status = "Sending";
+	}if (iETA > 3) {
+		Status = "Preparing";
+	}
+
+	if(m_ID.IsEmpty() == FALSE){
+	if ( iETA < 5 ) {
+		CString message;
+		message.Format(_T("Your order will take at least 5 working days! Change the delivery date!"));
+		AfxMessageBox(message);
+	}
+	else {
+		//Código
+		CString message;
+		message.Format(_T("Your order is in Progress! Thank you"));
+		AfxMessageBox(message);
+		m_listCtrl.DeleteAllItems();
+	}
+	
+
+	}
+	else {
+		CString message;
+		message.Format(_T("You are not currently in our Database! Please Register"));
+		AfxMessageBox(message);
+	}
 }
+
+
 

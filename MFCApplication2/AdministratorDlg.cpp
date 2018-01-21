@@ -34,3 +34,5 @@ END_MESSAGE_MAP()
 // AdministratorDlg message handlers
 
 
+// AdministratorDlg.cpp : implementation file
+//

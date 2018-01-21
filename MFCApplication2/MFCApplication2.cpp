@@ -72,8 +72,7 @@ BOOL CMFCApplication2App::InitInstance()
 	// such as the name of your company or organization
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 
-	CMFCApplication2Dlg MFCDlg;
-	MFCDlg.DoModal();
+	
 
 
 	CLogin dlg;
