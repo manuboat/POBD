@@ -28,7 +28,7 @@ CREATE TABLE `Warehouse`
 
 CREATE TABLE `TOrder`
 (
-	`IDOrder` INT NOT NULL,
+	`IDOrder` INT NOT NULL auto_increment,
 	`Date` DATE 	,
 	`Status` VARCHAR(50) 	,
 	`Cost` INT 	,
@@ -66,7 +66,7 @@ CREATE TABLE `Plant`
 
 CREATE TABLE `Makes`
 (
-	`IDCostumer` INT NOT NULL,
+	`IDCostumer` INT NOT NULL auto_increment,
 	`IDOrder` INT NOT NULL,
 	CONSTRAINT `PK_Makes` PRIMARY KEY (`IDCostumer`,`IDOrder`)
 )
