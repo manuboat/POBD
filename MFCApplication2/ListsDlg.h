@@ -3,6 +3,7 @@
 #include <string>
 #include "afxcmn.h"
 #include "afxwin.h"
+#include "afxdtctl.h"
 
 using namespace std;
 
@@ -32,7 +33,7 @@ public:
 	afx_msg void OnDtnDatetimechangeDatetimepicker1(NMHDR *pNMHDR, LRESULT *pResult);
 	afx_msg void OnStnClickedClock();
 	CListCtrl m_listCtrl;
-	
+	CString Costumer;
 	void LoadListBox();
 	CListBox m_listBox;
 
@@ -58,6 +59,12 @@ public:
 	afx_msg void OnBnClickedRadio1();
 	afx_msg void OnBnClickedRadio2();
 	float m_Unit_Price;
-
+	CString Date;
 	afx_msg void OnBnClickedButton1();
+	CDateTimeCtrl m_DateTime;
+	int rdn(int y, int m, int d);
+
+	int iYear;
+	int iMonth;
+	int iDay;
 };

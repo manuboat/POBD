@@ -47,9 +47,12 @@ public:
 	vector<CString> value3;
 	vector<CString> value4;
 	vector<CString> value5;
-
-
+	CString GetIDCostumer(CString Name);
+	void GetStatus();
+	void NewEntries();
+	void ChangeWarehouse(CString m_Ware,CString value);
 	myconnectorclassDB();
 	virtual ~myconnectorclassDB();
+	CString GetVariety(CString m_Select_ID);
 };
 

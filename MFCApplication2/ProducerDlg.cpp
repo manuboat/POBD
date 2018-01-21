@@ -132,5 +132,6 @@ void ProducerDlg::OnBnClickedCheck3()
 		GetDlgItem(IDC_EDIT4)->EnableWindow(false);
 		GetDlgItem(IDC_EDIT5)->EnableWindow(false);
 		GetDlgItem(IDC_EDIT6)->EnableWindow(false);
-	}	UpdateData(FALSE);
+	}
+	UpdateData(FALSE);
 }
