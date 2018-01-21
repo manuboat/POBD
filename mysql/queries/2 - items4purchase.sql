@@ -2,8 +2,8 @@
 
 select * from
 (
-	select p.Type as 'Manel'
+	select p.Name as 'Name'
 	from Plant as p, Produced as i
 	where i.IDPlant = p.IDPlant) as t
-group by Manel
+group by Name
     
