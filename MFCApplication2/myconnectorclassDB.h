@@ -51,6 +51,11 @@ public:
 	void GetStatus();
 	void NewEntries();
 	void ChangeWarehouse(CString m_Ware,CString value);
+	CString GetIDOrder();
+	void GetIDFarmIDWare(CString IDPlant);
+	void InsertOrder(CString Date, CString Status, CString Cost, CString ETA);
+	void InsertIncludes(CString OrderID, CString PlantID, CString FarmID, CString IDWarehouse, CString Amount);
+	void InsertMakes(CString CostumerID, CString OrderID);
 	myconnectorclassDB();
 	virtual ~myconnectorclassDB();
 	CString GetVariety(CString m_Select_ID);

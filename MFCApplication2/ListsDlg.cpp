@@ -78,6 +78,12 @@ m_listCtrl.InsertColumn(3, L"Price", LVCFMT_LEFT, 80);
 m_listCtrl.InsertColumn(4, L"Qt", LVCFMT_LEFT, 80);
 m_listCtrl.InsertColumn(5, L"Total", LVCFMT_LEFT, 80);
 
+CTime CurrentTime = CTime::GetCurrentTime();
+
+iDay = CurrentTime.GetDay();
+iMonth = CurrentTime.GetMonth();
+iYear = CurrentTime.GetYear();
+
 // Set the icon for this dialog. The framework does this automatically
 // when the application's main window is not a dialog    // Set small icon
 
@@ -350,6 +356,7 @@ void CListsDlg::OnBnClickedRadio3()
 
 void CListsDlg::OnBnClickedButton1()
 {
+	
 	myconnectorclassDB Myconnection;
 	Myconnection.connect();
 	CString m_ID = Myconnection.GetIDCostumer(Costumer);
@@ -360,9 +367,9 @@ void CListsDlg::OnBnClickedButton1()
 	int fMonth = CurrentTime.GetMonth();
 	int fYear = CurrentTime.GetYear();
 	CString strDay, strMonth, strYear, m_Date;
-	strDay.Format(_T("%d"), iDay);
-	strMonth.Format(_T("%d"), iMonth);
-	strYear.Format(_T("%d"), iYear);
+	strDay.Format(_T("%d"), fDay);
+	strMonth.Format(_T("%d"), fMonth);
+	strYear.Format(_T("%d"), fYear);
 	m_Date.Format(_T("%s/%s/%s"), strYear, strMonth, strDay);
 
 	int iETA = rdn(iYear, iMonth, iDay) - rdn(fYear, fMonth, fDay);
@@ -370,13 +377,16 @@ void CListsDlg::OnBnClickedButton1()
 	CString ETA;
 	ETA.Format(_T("%d"), iETA);
 	CString  Status;
-	if(iETA = 0){ 
+	if (iETA == 0) {
 		Status = "Delivered";
-	}if(iETA > 0 && iETA <= 3) {
+	}if (iETA > 0 && iETA <= 3) {
 		Status = "Sending";
 	}if (iETA > 3) {
 		Status = "Preparing";
 	}
+
+	CString Cost;
+	Cost.Format(_T("%.f"), v_output);
 
 	if(m_ID.IsEmpty() == FALSE){
 	if ( iETA < 5 ) {
@@ -385,7 +395,29 @@ void CListsDlg::OnBnClickedButton1()
 		AfxMessageBox(message);
 	}
 	else {
+		
+
+		
 		//Código
+
+
+
+		Myconnection.InsertOrder(m_Date,Status,Cost,ETA);
+		CString OrderID = Myconnection.GetIDOrder();
+		Myconnection.InsertMakes(m_ID, OrderID);
+
+		
+
+		for (int i = 0; i < m_listCtrl.GetItemCount(); i++) {
+		//int row = m_listCtrl.GetSelectionMark();
+
+		CString IDPlant = m_listCtrl.GetItemText(i,0);
+
+		Myconnection.GetIDFarmIDWare(IDPlant);
+		CString Amount = m_listCtrl.GetItemText(i, 4);
+
+		Myconnection.InsertIncludes(OrderID,IDPlant,Myconnection.value[i],Myconnection.value1[i],Amount);
+		}
 		CString message;
 		message.Format(_T("Your order is in Progress! Thank you"));
 		AfxMessageBox(message);

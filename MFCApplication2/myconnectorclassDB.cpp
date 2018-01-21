@@ -31,7 +31,7 @@ void myconnectorclassDB::connect() {
 
 void myconnectorclassDB::ListOptions(CString Name, CString Item) {
 
-	CString query = _T("select * from Plant where ") + Name + _T(" = '") + Item + _T("'");
+	CString query = _T("select p.IDPlant as 'id', p.Name, p.Variety, p.Type, p.MST, p.Family from Plant as p, Produced as pp where p.")+Name+(" = '")+Item+("' and p.IDPlant = pp.IDPlant");
 
 	Query(query);
 
@@ -77,7 +77,7 @@ void myconnectorclassDB::ListProduct() {
 
 	
 
-	CString query = _T("select p.Name as 'Name' from Plant as p, Include as i where i.IDPlant = p.IDPlant	group by Name; ");
+	CString query = _T("select p.Name as 'Name' from Plant as p, Produced as i where i.IDPlant = p.IDPlant group by Name; ");
 
 	Query(query);
 
@@ -90,7 +90,7 @@ void myconnectorclassDB::ListProduct() {
 
 void myconnectorclassDB::ListType(){
 
-	CString query = _T("select p.Type as 'Type' from Plant as p, Include as i where i.IDPlant = p.IDPlant	group by Type; ");
+	CString query = _T("select * from (select p.Type as 'Type' from Plant as p, Produced as i where i.IDPlant = p.IDPlant) as t	group by Type; ");
 
 	Query(query);
 
@@ -103,7 +103,7 @@ void myconnectorclassDB::ListType(){
 
 void myconnectorclassDB::ListFamily() {
 
-	CString query = _T("select p.Family as 'Family' from Plant as p, Include as i where i.IDPlant = p.IDPlant	group by Type; ");
+	CString query = _T("select * from (select p.Family as 'Family' from Plant as p, Produced as i where i.IDPlant = p.IDPlant) as t	group by Family; ");
 
 	Query(query);
 
@@ -226,6 +226,60 @@ void myconnectorclassDB::GetStatus() {
 
 }
 
+void myconnectorclassDB::InsertOrder(CString Date, CString Status, CString Cost, CString ETA) {
+
+
+	CString query = _T("INSERT INTO `TOrder` (`Date`,`Status`,`Cost`,`ETA`)	VALUES ('")+ Date + ("','") + Status + ("','") + Cost + ("','") + ETA + ("'); ");
+	Query(query);
+
+
+
+};
+
+void myconnectorclassDB::InsertIncludes(CString OrderID, CString PlantID, CString FarmID, CString IDWarehouse, CString Amount) {
+
+
+	CString query = _T("INSERT INTO `Include` (`IDOrder`,`IDPlant`,`IDFarm`,`IDWarehouse`,`Amount`)	VALUES ('") + OrderID + ("','") + PlantID + ("','") + FarmID + ("','") + IDWarehouse + ("','") + Amount + ("')");
+	Query(query);
+
+
+
+};
+
+void myconnectorclassDB::InsertMakes(CString CostumerID, CString OrderID) {
+
+
+	CString query = _T("INSERT INTO `Makes` (`IDCostumer`,`IDOrder`) VALUES	('")+ CostumerID +("','") + OrderID + ("')");
+		Query(query);
+
+
+
+};
+
+CString myconnectorclassDB::GetIDOrder() {
+	CString value;
+
+	CString query = _T("SELECT * FROM TOrder ORDER BY IDOrder DESC LIMIT 1");
+	Query(query);
+
+	while ((row = mysql_fetch_row(result)) != NULL) {
+		value = CPtoUnicode(row[0], 1251);
+	}
+	return value;
+
+};
+
+void myconnectorclassDB::GetIDFarmIDWare(CString IDPlant){
+
+	CString query = _T("select IDFarm, IDWarehouse from Produced where IDPlant =")+ IDPlant +("");
+	Query(query);
+
+	while ((row = mysql_fetch_row(result)) != NULL) {
+		value.push_back(CPtoUnicode(row[0], 1251));
+		value1.push_back(CPtoUnicode(row[1], 1251));
+	}
+
+}
 void myconnectorclassDB::Query(CString query)
 {
 	wchar_t *p = query.GetBuffer();
