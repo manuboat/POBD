@@ -1,6 +1,3 @@
-﻿  ListsDlg.cpp
-c:\users\manuel\documents\github\pobd\mfcapplication2\listsdlg.cpp(241): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\manuel\documents\github\pobd\mfcapplication2\listsdlg.cpp(272): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\manuel\documents\github\pobd\mfcapplication2\listsdlg.cpp(289): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+﻿  myconnectorclassDB.cpp
   MFCApplication2.vcxproj -> C:\Users\Manuel\Documents\GitHub\POBD\Debug\MFCApplication2.exe
   MFCApplication2.vcxproj -> C:\Users\Manuel\Documents\GitHub\POBD\Debug\MFCApplication2.pdb (Partial PDB)
