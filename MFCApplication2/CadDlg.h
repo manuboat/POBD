@@ -29,4 +29,5 @@ public:
 	CString m_Ware;
 	afx_msg void OnBnClickedButton1();
 	CListCtrl m_Status;
+	afx_msg void OnBnClickedOk();
 };

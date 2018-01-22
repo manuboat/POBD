@@ -44,4 +44,5 @@ public:
 	afx_msg void OnBnClickedButtonLogin();
 	CComboBox m_comboBoxCtrl;
 	afx_msg void OnBnClickedButton1();
+	afx_msg void OnBnClickedOk();
 };

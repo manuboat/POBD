@@ -94,10 +94,12 @@ void CLogin::OnBnClickedButtonLogin()
 		if (People.user[i].c_str() == m_username && People.pass[i].c_str() == m_password && People.type[i].c_str() == m_type )
 		{
 			if (People.type[i].c_str() == str1){
+				//ShowWindow(SW_HIDE);
+
 				CadDlg Admin;
 				Admin.DoModal();
 				
-				
+				//EndDialog(0);
 		        }
 			if (People.type[i].c_str() == str2) {
 				ShowWindow(SW_HIDE);
@@ -110,9 +112,12 @@ void CLogin::OnBnClickedButtonLogin()
 				
 			}
 			if (People.type[i].c_str() == str3) {
-			ProducerDlg Producer;
+				ShowWindow(SW_HIDE);
+
+				ProducerDlg Producer;
 				Producer.DoModal();
 				
+				EndDialog(0);
 			}
 			Flag = true;
 			break;

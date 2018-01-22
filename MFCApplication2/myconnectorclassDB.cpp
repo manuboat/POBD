@@ -47,6 +47,30 @@ void myconnectorclassDB::ListOptions(CString Name, CString Item) {
 }
 
 
+void myconnectorclassDB::ListPlant() {
+	value.clear();
+	value1.clear();
+	value2.clear();
+	value3.clear();
+	value4.clear();
+	value5.clear();
+	value6.clear();
+
+	CString query = _T("select * from Plant");
+
+	Query(query);
+
+	while ((row = mysql_fetch_row(result)) != NULL) {
+		value.push_back(CPtoUnicode(row[0], 1251));
+		value1.push_back(CPtoUnicode(row[1], 1251));
+		value2.push_back(CPtoUnicode(row[2], 1251));
+		value3.push_back(CPtoUnicode(row[3], 1251));
+		value4.push_back(CPtoUnicode(row[4], 1251));
+		value5.push_back(CPtoUnicode(row[5], 1251));
+	}
+
+}
+
 
 CString myconnectorclassDB::CheckName(CString ID_Name) {
 	CString value;
@@ -182,9 +206,15 @@ CString myconnectorclassDB::GetIDCostumer(CString Name) {
 };
 
 void myconnectorclassDB::NewEntries() {
-
-	CString query = _T("select*from(select p.Name as'P',f.Name,w.Location as'W',pp.Amount,pp.UnitPrice,pp.Date from Plant as p,Farm as f,Warehouse as w,Produced as pp where p.IDPlant=pp.IDPlant and f.IDFarm=pp.IDFarm and w.IDWarehouse=pp.IDWarehouse)as R where W='New'");
-
+	value.clear();
+	value1.clear();
+	value2.clear();
+	value3.clear();
+	value4.clear();
+	value5.clear();
+	value6.clear();
+	CString query = _T("select*from(select p.IDPlant as 'ID',p.Name as'P',f.Name,w.Location as'W',pp.Amount,pp.Date from Plant as p,Farm as f,Warehouse as w,Produced as pp where p.IDPlant=pp.IDPlant and f.IDFarm=pp.IDFarm and w.IDWarehouse=pp.IDWarehouse)as R where W='New'");
+	
 
 	Query(query);
 
@@ -195,6 +225,7 @@ void myconnectorclassDB::NewEntries() {
 		value3.push_back(CPtoUnicode(row[3], 1251));
 		value4.push_back(CPtoUnicode(row[4], 1251));
 		value5.push_back(CPtoUnicode(row[5], 1251));
+		value6.push_back(CPtoUnicode(row[6], 1251));
 	}
 
 }
@@ -211,7 +242,11 @@ void myconnectorclassDB::ChangeWarehouse(CString WareHouse, CString Plant) {
 };
 
 void myconnectorclassDB::GetStatus() {
-
+	value.clear();
+	value1.clear();
+	value2.clear();
+	value3.clear();
+	value4.clear();
 	CString query = _T("select s.IDWarehouse, w.Location, concat(s.Stored/w.Capacity*100,'% ')as 'Stored', w.Capacity from(select pp.IDWarehouse, sum(pp.Amount) as 'Stored' from  Produced as pp group by pp.IDWarehouse) as s, Warehouse as w where s.IDWarehouse = w.IDWarehouse");
 
 

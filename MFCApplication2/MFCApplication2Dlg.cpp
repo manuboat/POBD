@@ -86,6 +86,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication2Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_Example, &CMFCApplication2Dlg::OnBnClickedButtonExample)
 	ON_BN_CLICKED(IDC_BUTTON_Login, &CMFCApplication2Dlg::OnBnClickedButtonLogin)
 	ON_BN_CLICKED(IDC_BUTTON1, &CMFCApplication2Dlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDOK, &CMFCApplication2Dlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
@@ -251,3 +252,10 @@ void CMFCApplication2Dlg::OnBnClickedButton1()
 
 
 
+
+
+void CMFCApplication2Dlg::OnBnClickedOk()
+{
+	// TODO: Add your control notification handler code here
+	CDialogEx::OnOK();
+}

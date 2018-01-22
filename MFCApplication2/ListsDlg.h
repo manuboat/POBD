@@ -67,4 +67,6 @@ public:
 	int iYear;
 	int iMonth;
 	int iDay;
+	afx_msg void OnBnClickedOk();
+	CEdit c_Item;
 };

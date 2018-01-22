@@ -6,6 +6,8 @@
 #include "ProducerDlg.h"
 #include "afxdialogex.h"
 #include "myconnectorclassDB.h"
+#include "Login.h"
+#include <random>
 
 // ProducerDlg dialog
 
@@ -20,6 +22,7 @@ ProducerDlg::ProducerDlg(CWnd* pParent /*=NULL*/)
 	, m_ID(_T(""))
 	, m_Amount(_T(""))
 	, v_FlagCheck(FALSE)
+	, v_ID(_T(""))
 {
 
 }
@@ -39,6 +42,9 @@ void ProducerDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT7, m_ID);
 	DDX_Text(pDX, IDC_EDIT8, m_Amount);
 	DDX_Check(pDX, IDC_CHECK3, v_FlagCheck);
+	DDX_Text(pDX, IDC_EDIT9, v_ID);
+	DDX_Control(pDX, IDC_EDIT9, c_ID);
+	DDX_Control(pDX, IDC_LIST1, m_ListBox);
 }
 
 
@@ -46,25 +52,71 @@ BEGIN_MESSAGE_MAP(ProducerDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON2, &ProducerDlg::OnBnClickedButton2)
 	ON_BN_CLICKED(IDC_BUTTON3, &ProducerDlg::OnBnClickedButton3)
 	ON_BN_CLICKED(IDC_CHECK3, &ProducerDlg::OnBnClickedCheck3)
+	ON_BN_CLICKED(IDOK, &ProducerDlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
 // ProducerDlg message handlers
 
 
-void ProducerDlg::OnBnClickedButton2()
-{
+BOOL ProducerDlg::OnInitDialog() {
+	CDialogEx::OnInitDialog();
 
-	// TODO: Add your control notification handler code here
-	UpdateData(TRUE);
-	myconnectorclassDB Myconnection;
-	Myconnection.connect();
+	// Set the icon for this dialog. The framework does this automatically
+	// when the application's main window is not a dialog
+	// Set small icon
+
+	// TODO: Add extra initialization here
+	// Ask Mfc to create/insert a column
+
+	myconnectorclassDB MyConnection;
+	MyConnection.connect();
+
+	MyConnection.ListPlant();
+
+	m_ListBox.InsertColumn(0, L"ID", LVCFMT_LEFT, 100);
+	m_ListBox.InsertColumn(1, L"Plant", LVCFMT_LEFT, 100);
+	m_ListBox.InsertColumn(2, L"Variety", LVCFMT_CENTER, 80);
+	m_ListBox.InsertColumn(3, L"Type", LVCFMT_LEFT, 100);
+	m_ListBox.InsertColumn(4, L"MST", LVCFMT_LEFT, 80);
+	m_ListBox.InsertColumn(5, L"Family", LVCFMT_LEFT, 80);
+
+	for (unsigned int i = 0; i < MyConnection.value.size(); i++) {
+		int nItem;
+
+		nItem = m_ListBox.InsertItem(0, MyConnection.value[i]);
+		m_ListBox.SetItemText(nItem, 1, MyConnection.value1[i]);
+		m_ListBox.SetItemText(nItem, 2, MyConnection.value2[i]);
+		m_ListBox.SetItemText(nItem, 3, MyConnection.value3[i]);
+		m_ListBox.SetItemText(nItem, 4, MyConnection.value4[i]);
+		m_ListBox.SetItemText(nItem, 5, MyConnection.value5[i]);
+	}
+
 
 	
 
+
+	return TRUE; // return TRUE unless you set the focus to a control
+}
+
+
+void ProducerDlg::OnBnClickedButton2()
+{
+	myconnectorclassDB Myconnection;
+	Myconnection.connect();
+
+	UpdateData(TRUE);
+
+	if (v_FlagCheck == (BOOL)true){
+	// TODO: Add your control notification handler code here
+
 	Myconnection.InsertPlant(m_Name, m_Variety, m_Type, m_MST, m_Family );
 	IDPlant = Myconnection.GetID(m_Name);
+	}
+	if(v_FlagCheck == (BOOL)false) {
 
+	IDPlant= v_ID;
+	}
 
 	CTime CurrentTime = CTime::GetCurrentTime();
 
@@ -90,9 +142,39 @@ void ProducerDlg::OnBnClickedButton2()
 	CString IDWarehouse;
 	IDWarehouse = "0";
 	CString UnitPrice;
-	UnitPrice = "10";
+		
+	std::random_device seeder;
+	//then make a mersenne twister engine
+	std::mt19937 engine(seeder());
+	//then the easy part... the distribution
+	std::uniform_int_distribution<int> dist(1, 10);
+	//then just generate the integer like this:
+	int Price = dist(engine);
+
+	UnitPrice.Format(_T("%i"),Price);
 	Myconnection.InsertProduced(IDPlant, m_ID , IDWarehouse,m_Amount, UnitPrice, m_Date);
 	
+	
+
+	Myconnection.ListPlant();
+
+	m_ListBox.InsertColumn(0, L"ID", LVCFMT_LEFT, 100);
+	m_ListBox.InsertColumn(1, L"Plant", LVCFMT_LEFT, 100);
+	m_ListBox.InsertColumn(2, L"Variety", LVCFMT_CENTER, 80);
+	m_ListBox.InsertColumn(3, L"Type", LVCFMT_LEFT, 100);
+	m_ListBox.InsertColumn(4, L"MST", LVCFMT_LEFT, 80);
+	m_ListBox.InsertColumn(5, L"Family", LVCFMT_LEFT, 80);
+
+	for (unsigned int i = 0; i < Myconnection.value.size(); i++) {
+		int nItem;
+
+		nItem = m_ListBox.InsertItem(0, Myconnection.value[i]);
+		m_ListBox.SetItemText(nItem, 1, Myconnection.value1[i]);
+		m_ListBox.SetItemText(nItem, 2, Myconnection.value2[i]);
+		m_ListBox.SetItemText(nItem, 3, Myconnection.value3[i]);
+		m_ListBox.SetItemText(nItem, 4, Myconnection.value4[i]);
+		m_ListBox.SetItemText(nItem, 5, Myconnection.value5[i]);
+	}
 	
 
 
@@ -111,6 +193,7 @@ void ProducerDlg::OnBnClickedButton3()
 	m_Type.Empty();
 	m_Variety.Empty();
 	m_Name.Empty();
+	v_ID.Empty();
 	UpdateData(FALSE);
 }
 
@@ -125,6 +208,7 @@ void ProducerDlg::OnBnClickedCheck3()
 		GetDlgItem(IDC_EDIT4)->EnableWindow(true);
 		GetDlgItem(IDC_EDIT5)->EnableWindow(true);
 		GetDlgItem(IDC_EDIT6)->EnableWindow(true);
+		GetDlgItem(IDC_EDIT9)->EnableWindow(false);
 	}
 	else
 	{
@@ -132,6 +216,20 @@ void ProducerDlg::OnBnClickedCheck3()
 		GetDlgItem(IDC_EDIT4)->EnableWindow(false);
 		GetDlgItem(IDC_EDIT5)->EnableWindow(false);
 		GetDlgItem(IDC_EDIT6)->EnableWindow(false);
+		GetDlgItem(IDC_EDIT9)->EnableWindow(true);
 	}
 	UpdateData(FALSE);
+}
+
+
+void ProducerDlg::OnBnClickedOk()
+{
+	// TODO: Add your control notification handler code here
+	ShowWindow(SW_HIDE);
+
+	CLogin Login;
+	Login.DoModal();
+
+	EndDialog(0);
+	CDialogEx::OnOK();
 }

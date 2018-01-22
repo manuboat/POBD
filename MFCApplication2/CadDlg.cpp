@@ -6,6 +6,7 @@
 #include "CadDlg.h"
 #include "afxdialogex.h"
 #include "myconnectorclassDB.h"
+#include "Login.h"
 
 
 // CadDlg dialog
@@ -35,6 +36,7 @@ void CadDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CadDlg, CDialogEx)
 	ON_NOTIFY(LVN_ITEMCHANGED, IDC_LIST2, &CadDlg::OnLvnItemchangedList2)
 	ON_BN_CLICKED(IDC_BUTTON1, &CadDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDOK, &CadDlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
@@ -54,12 +56,13 @@ BOOL CadDlg::OnInitDialog() {
 
 	MyConnection.NewEntries();
 
-	m_ListBox.InsertColumn(0,L"Plant",LVCFMT_LEFT,100);
-	m_ListBox.InsertColumn(1, L"Farm", LVCFMT_CENTER, 80);
-	m_ListBox.InsertColumn(2, L"Warehouse", LVCFMT_LEFT, 100);
-	m_ListBox.InsertColumn(3, L"Amount", LVCFMT_LEFT, 80);
-	m_ListBox.InsertColumn(4, L"Unit Price", LVCFMT_LEFT, 80);
-	m_ListBox.InsertColumn(5, L"Entry Date", LVCFMT_LEFT, 80);
+	m_ListBox.InsertColumn(0, L"ID", LVCFMT_LEFT, 100);
+	m_ListBox.InsertColumn(1,L"Plant",LVCFMT_LEFT,100);
+	m_ListBox.InsertColumn(2, L"Farm", LVCFMT_CENTER, 80);
+	m_ListBox.InsertColumn(3, L"Warehouse", LVCFMT_LEFT, 100);
+	m_ListBox.InsertColumn(4, L"Amount", LVCFMT_LEFT, 80);
+	m_ListBox.InsertColumn(5, L"Unit Price", LVCFMT_LEFT, 80);
+	m_ListBox.InsertColumn(6, L"Entry Date", LVCFMT_LEFT, 80);
 
 	for (unsigned int i = 0; i < MyConnection.value.size(); i++) {
 		int nItem;
@@ -70,6 +73,7 @@ BOOL CadDlg::OnInitDialog() {
 		m_ListBox.SetItemText(nItem, 3, MyConnection.value3[i]);
 		m_ListBox.SetItemText(nItem, 4, MyConnection.value4[i]);
 		m_ListBox.SetItemText(nItem, 5, MyConnection.value5[i]);
+		m_ListBox.SetItemText(nItem, 6, MyConnection.value6[i]);
 	}
 	
 
@@ -79,6 +83,7 @@ BOOL CadDlg::OnInitDialog() {
 	m_Status.InsertColumn(1, L"Location", LVCFMT_CENTER, 80);
 	m_Status.InsertColumn(2, L"Stored", LVCFMT_LEFT, 100);
 	m_Status.InsertColumn(3, L"Capacity", LVCFMT_LEFT, 80);
+
 	for (unsigned int i = 0; i < MyConnection.value.size(); i++) {
 		int nItem;
 
@@ -121,10 +126,8 @@ void CadDlg::OnBnClickedButton1()
 
 	myconnectorclassDB Myconnection;
 	Myconnection.connect();
-	
-	CString value = Myconnection.GetID(m_Item);
 
-	Myconnection.ChangeWarehouse(m_Ware, value);
+	Myconnection.ChangeWarehouse(m_Ware, m_Item);
 
 	myconnectorclassDB MyConnection;
 	MyConnection.connect();
@@ -163,4 +166,17 @@ void CadDlg::OnBnClickedButton1()
 	CString message;
 	message.Format(_T("Warehouse Changed"));
 	AfxMessageBox(message);
+}
+
+
+void CadDlg::OnBnClickedOk()
+{
+	// TODO: Add your control notification handler code here
+	ShowWindow(SW_HIDE);
+
+	CLogin Login;
+	Login.DoModal();
+
+	EndDialog(0);
+	CDialogEx::OnOK();
 }

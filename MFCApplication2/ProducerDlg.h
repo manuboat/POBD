@@ -1,5 +1,6 @@
 #pragma once
 #include "afxwin.h"
+#include "afxcmn.h"
 
 
 // ProducerDlg dialog
@@ -34,4 +35,9 @@ public:
 	afx_msg void OnBnClickedButton3();
 	afx_msg void OnBnClickedCheck3();
 	BOOL v_FlagCheck;
+	afx_msg void OnBnClickedOk();
+	CString v_ID;
+	CEdit c_ID;
+	virtual BOOL OnInitDialog();
+	CListCtrl m_ListBox;
 };

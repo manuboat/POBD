@@ -35,6 +35,7 @@ public:
 	void ListProduct();
 	void ListType();
 	void InsertProduct();
+	void ListPlant();
 	void ListFamily();
 	void ListOptions(CString Name, CString Item);
 	CString GetUnitPrice(CString ID);
@@ -47,6 +48,7 @@ public:
 	vector<CString> value3;
 	vector<CString> value4;
 	vector<CString> value5;
+	vector<CString> value6;
 	CString GetIDCostumer(CString Name);
 	void GetStatus();
 	void NewEntries();

@@ -6,6 +6,7 @@
 #include "ListsDlg.h"
 #include "afxdialogex.h"
 #include "myconnectorclassDB.h"
+#include "Login.h"
 
 
 // CListsDlg dialog
@@ -49,6 +50,7 @@ void CListsDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT4, M_timer);
 	DDX_Text(pDX, IDC_EDIT_Unit_Price, m_Unit_Price);
 	DDX_Control(pDX, IDC_DATETIMEPICKER1, m_DateTime);
+	DDX_Control(pDX, IDC_EDIT_Unit_Price, c_Item);
 }
 
 
@@ -64,6 +66,7 @@ BEGIN_MESSAGE_MAP(CListsDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_RADIO1, &CListsDlg::OnBnClickedRadio1)
 	ON_BN_CLICKED(IDC_RADIO2, &CListsDlg::OnBnClickedRadio2)
 	ON_BN_CLICKED(IDC_BUTTON1, &CListsDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDOK, &CListsDlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
@@ -270,6 +273,7 @@ void CListsDlg::OnEnChangeEditSelectId()
 	
 	value = MyConnection.GetUnitPrice(m_Select_ID);
 	m_Unit_Price = _wtof(value);
+	c_Item.SetReadOnly();
 	UpdateData(FALSE);
 	}
 }
@@ -435,3 +439,16 @@ void CListsDlg::OnBnClickedButton1()
 
 
 
+
+
+void CListsDlg::OnBnClickedOk()
+{
+	// TODO: Add your control notification handler code here
+	ShowWindow(SW_HIDE);
+
+	CLogin Login;
+	Login.DoModal();
+
+	EndDialog(0);
+	CDialogEx::OnOK();
+}
