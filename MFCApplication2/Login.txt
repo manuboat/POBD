@@ -1,3 +1,5 @@
 admin admin Administrator
 Manel 123 Client
+Ruben 123 Client
+Jose 123 Client
 David 123 Producer

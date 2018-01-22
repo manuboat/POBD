@@ -30,6 +30,8 @@ void CadDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_LIST2, m_ListBox);
 	DDX_Text(pDX, IDC_EDIT1, m_Ware);
 	DDX_Control(pDX, IDC_LIST1, m_Status);
+	DDX_Control(pDX, IDC_LIST3, m_ListBox1);
+	DDX_Control(pDX, IDC_LIST4, m_ListBox2);
 }
 
 
@@ -48,8 +50,82 @@ BOOL CadDlg::OnInitDialog() {
 	// when the application's main window is not a dialog
 	     // Set small icon
 
+
+
+
+	m_ListBox1.InsertColumn(0, L"IDCostumer", LVCFMT_LEFT, 100);
+	m_ListBox1.InsertColumn(1, L"Name", LVCFMT_LEFT, 100);
+	m_ListBox1.InsertColumn(2, L"Consumption", LVCFMT_CENTER, 80);
+	m_ListBox1.InsertColumn(3, L"Phone", LVCFMT_LEFT, 100);
+	m_ListBox1.InsertColumn(4, L"Mail", LVCFMT_LEFT, 80);
+
+	int nItem;
+	
+	nItem = m_ListBox1.InsertItem(0, L"4");
+	m_ListBox1.SetItemText(nItem, 1, L"Ruben");
+	m_ListBox1.SetItemText(nItem, 2, L"80");
+	m_ListBox1.SetItemText(nItem, 3, L"934562324");
+	m_ListBox1.SetItemText(nItem, 4, L"rubentecnico@gmail.com");
+
+	nItem = m_ListBox1.InsertItem(0, L"1");
+	m_ListBox1.SetItemText(nItem, 1, L"Manel");
+	m_ListBox1.SetItemText(nItem, 2, L"60");
+	m_ListBox1.SetItemText(nItem, 3, L"91645463324");
+	m_ListBox1.SetItemText(nItem, 4, L"pingodoce@gmail.com");
+
+	nItem = m_ListBox1.InsertItem(0, L"6");
+	m_ListBox1.SetItemText(nItem, 1, L"Jose");
+	m_ListBox1.SetItemText(nItem, 2, L"50");
+	m_ListBox1.SetItemText(nItem, 3, L"943262324");
+	m_ListBox1.SetItemText(nItem, 4, L"joseguerra@gmail.com");
+	
+	
+
 									 // TODO: Add extra initialization here
-							 // Ask Mfc to create/insert a column
+
+
+
+	m_ListBox2.InsertColumn(0, L"IDFarm", LVCFMT_LEFT, 100);
+	m_ListBox2.InsertColumn(1, L"Name", LVCFMT_LEFT, 100);
+	m_ListBox2.InsertColumn(2, L"Supplied", LVCFMT_CENTER, 80);
+	m_ListBox2.InsertColumn(3, L"Owner", LVCFMT_LEFT, 100);
+	m_ListBox2.InsertColumn(4, L"Address", LVCFMT_LEFT, 80);
+	m_ListBox2.InsertColumn(5, L"Date", LVCFMT_LEFT, 80);
+	
+	nItem = m_ListBox2.InsertItem(0, L"2");
+	m_ListBox2.SetItemText(nItem, 1, L"Quinta Jose");
+	m_ListBox2.SetItemText(nItem, 2, L"58");
+	m_ListBox2.SetItemText(nItem, 3, L"David");
+	m_ListBox2.SetItemText(nItem, 4, L"Algarve");
+	m_ListBox2.SetItemText(nItem, 4, L"2018/01/22");
+
+	nItem = m_ListBox2.InsertItem(0, L"1");
+	m_ListBox2.SetItemText(nItem, 1, L"Herdade Vale da Rosa");
+	m_ListBox2.SetItemText(nItem, 2, L"44");
+	m_ListBox2.SetItemText(nItem, 3, L"Manel");
+	m_ListBox2.SetItemText(nItem, 4, L"Alentejo");
+	m_ListBox2.SetItemText(nItem, 4, L"2018/01/12");
+
+	nItem = m_ListBox2.InsertItem(0, L"3");
+	m_ListBox2.SetItemText(nItem, 1, L"WesternComboys");
+	m_ListBox2.SetItemText(nItem, 2, L"22");
+	m_ListBox2.SetItemText(nItem, 3, L"Duarte");
+	m_ListBox2.SetItemText(nItem, 4, L"Texas");
+	m_ListBox2.SetItemText(nItem, 4, L"2018/01/22");
+
+	nItem = m_ListBox2.InsertItem(0, L"4");
+	m_ListBox2.SetItemText(nItem, 1, L"Ze Wars");
+	m_ListBox2.SetItemText(nItem, 2, L"9");
+	m_ListBox2.SetItemText(nItem, 3, L"Jose");
+	m_ListBox2.SetItemText(nItem, 4, L"Fundão");
+	m_ListBox2.SetItemText(nItem, 4, L"2018/01/20");
+	
+									 
+								 
+									 
+									 
+									 
+									 // Ask Mfc to create/insert a column
 
 	myconnectorclassDB MyConnection;
 	MyConnection.connect();
@@ -149,10 +225,7 @@ void CadDlg::OnBnClickedButton1()
 
 	MyConnection.GetStatus();
 
-	m_Status.InsertColumn(0, L"IDWarehouse", LVCFMT_LEFT, 100);
-	m_Status.InsertColumn(1, L"Location", LVCFMT_CENTER, 80);
-	m_Status.InsertColumn(2, L"Stored", LVCFMT_LEFT, 100);
-	m_Status.InsertColumn(3, L"Capacity", LVCFMT_LEFT, 80);
+	
 	for (unsigned int i = 0; i < MyConnection.value.size(); i++) {
 		int nItem;
 

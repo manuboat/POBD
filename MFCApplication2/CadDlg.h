@@ -30,4 +30,6 @@ public:
 	afx_msg void OnBnClickedButton1();
 	CListCtrl m_Status;
 	afx_msg void OnBnClickedOk();
+	CListCtrl m_ListBox1;
+	CListCtrl m_ListBox2;
 };
